@@ -40,7 +40,7 @@ can query the relevant test builds.
 
 ## Proposal
 
-![alt text](https://github.com/vhe182/rpc-perf-dash/tree/master/docs/images/perf-dash-proposal-diagram.png)
+![Diagram 1](../images/perf-dash-proposal-diagram.png)
 
 ## Rationale
 
