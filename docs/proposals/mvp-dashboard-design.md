@@ -1,6 +1,6 @@
-[//]: <> This proposal template was taken from:
-[//]: <> https://github.com/golang/proposal/blob/master/design/TEMPLATE.md
-[//]: <> All credit goes to the original authors of this document.
+*This proposal template was taken from:*
+[Go github repo](https://github.com/golang/proposal/blob/master/design/TEMPLATE.md)
+*All credit goes to the original authors of this document.*
 
 # Proposal: Performance Dashboard MVP
 
@@ -10,16 +10,37 @@ Last updated: 2017-01-12
 
 ## Abstract
 
-A short summary of the proposal.
+We propose a dashboard/server that allows for the automated retrieval,
+archive, format, and display of performance tests run in the performance lab.
+This tool will allow our team to investigate performance issues and facilitate
+the sharing of lab results with other teams.
 
 ## Background
 
-An introduction of the necessary background and the problem being solved by
-the proposed change.
+Viewing performance test results from the performance lab as it trends across
+time is tedious and repetitive. To view this data, the following actions must
+take place:
+
+1. Run Performance Test
+1. Retrieve report file
+1. Format data so that it can be entered into a database
+1. Insert data into database
+1. Query the database for timerange of tests
+1. Display the data in a format that is easy to understand (graphs)
+1. Share the visualizations of the tests with other developers
+
+This set of actions occurs everytime there is a need to investigate lab
+performance. Automating these actions allows more time for developers to
+invest in development and investigation of performance issues.
+
+Sharing these easily digestable performance results with other team members
+currently requires a large portion of the team's time.  This can be minimized
+by allowing other teams to have access to the dashboard/server so that they
+can query the relevant test builds.
 
 ## Proposal
 
-A precise statement of the proposed change.
+![alt text](https://github.com/vhe182/rpc-perf-dash/tree/master/docs/images/perf-dash-proposal-diagram.png)
 
 ## Rationale
 
