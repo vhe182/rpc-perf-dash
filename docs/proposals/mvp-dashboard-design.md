@@ -29,8 +29,12 @@ take place:
 1. Share the visualizations of the tests with other developers
 
 This set of actions occurs everytime there is a need to investigate lab
-performance. Automating these actions allows more time for developers to
-invest in development and investigation of performance issues.
+performance. These actions also requires a lot of time, meaning that by the
+time the issue is resolved, it is too late to apply the solution becuase the
+current release has already moved forward. Automating these actions allows more
+time for developers to invest in development and investigation of performance
+issues and shrinks the feedback cycle from the moment performance issues are
+introduced in the code to the moment when a solution can be proposed.
 
 Sharing these easily digestable performance results with other team members
 currently requires a large portion of the team's time.  This can be minimized
