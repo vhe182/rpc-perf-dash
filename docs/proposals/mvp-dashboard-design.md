@@ -10,10 +10,10 @@ Last updated: 2017-01-12
 
 ## Abstract
 
-We propose a dashboard/server that allows for the automated retrieval,
-archive, format, and display of performance tests run in the performance lab.
-This tool will allow our team to investigate performance issues and facilitate
-the sharing of lab results with other teams.
+We propose a dashboard/server that allows for the automated retrieval, and
+display of performance tests results from any of the RPC-QE labs. This tool
+will allow our team to identify performance issues and regressions as well as
+facilitate the sharing of lab results with other teams.
 
 ## Background
 
