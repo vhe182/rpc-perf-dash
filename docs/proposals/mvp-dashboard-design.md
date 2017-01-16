@@ -17,15 +17,14 @@ facilitate the sharing of lab results with other teams.
 
 ## Background
 
-Viewing performance test results from the performance lab as it trends across
+Viewing performance test results from any of the QE labs as it trends across
 time is tedious and repetitive. To view this data, the following actions must
 take place:
 
-1. Run Performance Test
-1. Retrieve report file
-1. Format data so that it can be entered into a database
-1. Insert data into database
-1. Query the database for timerange of tests
+1. Run Performance Test within Jenkins
+1. Retrieve log file
+1. Format data
+1. User investigates data for information regarding performance issue
 1. Display the data in a format that is easy to understand (graphs)
 1. Share the visualizations of the tests with other developers
 
