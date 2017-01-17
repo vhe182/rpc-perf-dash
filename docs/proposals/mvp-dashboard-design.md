@@ -53,13 +53,13 @@ initial development process, these queries will be hardcoded for test results.
 Adding query build functionality for the user is a feature that will be
 developed in future development cycles.
 
-The server polls the data storage for performance test logs. The frequency of
+The server polls the data storage unit for performance test logs. The frequency of
 the polling will be adjusted after implementation so that it reflects the rate
-that the test results enter the data storage. The server is to maintain a
-cache of frequently and recently accessed data. The server expects a json
-result from the data store.
+that test results enter the data storage. The server is to maintain a cache of
+frequently and recently accessed data. The server expects a json result from
+the data store.
 
-This data is then pushed to the dashboard.
+This data can then be received by the dashboard.
 
 ### Dashboard
 
@@ -80,3 +80,12 @@ A description of the steps in the implementation, who will do them, and when.
 
 A discussion of issues relating to this proposal for which the author does not
 know the solution. This section may be omitted if there are none.
+
+1. What data storage service should be used to store the test results?
+1. Should the server poll the data storage unit at a set rate or should the
+   data storage unit push updates whenever they occur?
+1. What tool will format and display the visualization of the data?
+  * D3
+  * ggplot
+  * Grafana
+  * Some other tool?
