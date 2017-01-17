@@ -43,12 +43,34 @@ can query the relevant test builds.
 
 ## Proposal
 
-![Diagram 1](../images/perf-dash-proposal-diagram.png)
+![alt text](../images/perf-dash-proposal-diagram.png "Perf-Dash Diagram")
+
+### Server API
+
+The system we propose requires the development of a server API that will be
+used to serve queries that a user makes via the dashboard. To speed up the
+initial development process, these queries will be hardcoded for test results.
+Adding query build functionality for the user is a feature that will be
+developed in future development cycles.
+
+The server polls the data storage for performance test logs. The frequency of
+the polling will be adjusted after implementation so that it reflects the rate
+that the test results enter the data storage. The server is to maintain a
+cache of frequently and recently accessed data. The server expects a json
+result from the data store.
+
+This data is then pushed to the dashboard.
+
+### Dashboard
+
+The dashboard communicates with the server using an NGINX reverse proxy. This
+is needed because the dashboard and server services both sit on the same node.
 
 ## Rationale
 
-A discussion of alternate approaches and the trade offs, advantages, and
-disadvantages of the specified approach.
+1. Go vs. Python?
+1. Angular JS 2 vs Angular JS 1?
+1. Why build dashboard instead of using Grafana?
 
 ## Implementation
 
