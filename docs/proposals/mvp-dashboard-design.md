@@ -10,28 +10,31 @@ Last updated: 2017-01-12
 
 ## Abstract
 
-We propose a dashboard/server that allows for the automated retrieval,
-archive, format, and display of performance tests run in the performance lab.
-This tool will allow our team to investigate performance issues and facilitate
-the sharing of lab results with other teams.
+We propose a dashboard/server that allows for the automated retrieval, and
+display of performance tests results from any of the RPC-QE labs. This tool
+will allow our team to identify performance issues and regressions as well as
+facilitate the sharing of lab results with other teams.
 
 ## Background
 
-Viewing performance test results from the performance lab as it trends across
+Viewing performance test results from any of the QE labs as it trends across
 time is tedious and repetitive. To view this data, the following actions must
 take place:
 
-1. Run Performance Test
-1. Retrieve report file
-1. Format data so that it can be entered into a database
-1. Insert data into database
-1. Query the database for timerange of tests
+1. Run Performance Test within Jenkins
+1. Retrieve log file
+1. Format data
+1. User investigates data for information regarding performance issue
 1. Display the data in a format that is easy to understand (graphs)
 1. Share the visualizations of the tests with other developers
 
 This set of actions occurs everytime there is a need to investigate lab
-performance. Automating these actions allows more time for developers to
-invest in development and investigation of performance issues.
+performance. These actions also requires a lot of time, meaning that by the
+time the issue is resolved, it is too late to apply the solution becuase the
+current release has already moved forward. Automating these actions allows more
+time for developers to invest in development and investigation of performance
+issues and shrinks the feedback cycle from the moment performance issues are
+introduced in the code to the moment when a solution can be proposed.
 
 Sharing these easily digestable performance results with other team members
 currently requires a large portion of the team's time.  This can be minimized
@@ -40,7 +43,7 @@ can query the relevant test builds.
 
 ## Proposal
 
-![alt text](https://github.com/vhe182/rpc-perf-dash/tree/master/docs/images/perf-dash-proposal-diagram.png)
+![Diagram 1](../images/perf-dash-proposal-diagram.png)
 
 ## Rationale
 
