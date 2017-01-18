@@ -53,18 +53,31 @@ initial development process, these queries will be hardcoded for test results.
 Adding query build functionality for the user is a feature that will be
 developed in future development cycles.
 
-The server polls the data storage unit for performance test logs. The frequency of
-the polling will be adjusted after implementation so that it reflects the rate
-that test results enter the data storage. The server is to maintain a cache of
-frequently and recently accessed data. The server expects a json result from
-the data store.
+The server polls the data storage unit for performance test logs. The frequency
+of the polling will be adjusted after implementation so that it reflects the
+rate that test results enter the data storage. The server is to maintain a
+cache of frequently and recently accessed data. The server expects a json
+result from the data store.
 
 This data can then be received by the dashboard.
 
 ### Dashboard
 
-The dashboard communicates with the server using an NGINX reverse proxy. This
-is needed because the dashboard and server services both sit on the same node.
+The dashboard serves the purpose of allowing the user to make queries of the
+results stored in the data storage unit. The dashboard provides a simple user
+interface with a list of drop down menus for options such as: lab, config,
+test, run, and metric. The dashboard communicates with the server (both
+running on the same node) using an NGINX reverse proxy.
+
+The query is made via HTML requests in the form of `GET /api/labs`,
+`GET /api/labs/{lab id}`. The expected result is a json with the appropriate
+test data. This json is then used to create the graph of the specified metrics
+as they trend over the past 50 builds.
+
+Our choice of developing a REST API provides the benefit that any graph
+configured by a user can be sured via the URL link to that page.  This allows
+for the fast sharing of performance test results between team members and
+other teams.
 
 ## Rationale
 
@@ -78,14 +91,26 @@ A description of the steps in the implementation, who will do them, and when.
 
 ## Open issues (if applicable)
 
-A discussion of issues relating to this proposal for which the author does not
-know the solution. This section may be omitted if there are none.
-
 1. What data storage service should be used to store the test results?
+  * The performance team has previously used [InfluxDB][1] to handle database
+    duties. InfluxDB is well-suited to the task due to its optimization for
+    time-series data. The perf team has also used it before so they are
+    already familiar with the InfluxDB libraries.
+  * Test results can be stored in files and orderedd in a series of
+    directories. This method would require minimal setup and can be easily
+    ported to another data storage system. An issue with this strategy is that
+    the data will have to all follow the same formatting standards, this adds
+    complexity and added time that the perf team will need to develop a format
+    that can accomodate all of the KPIs and their varying metrics.
 1. Should the server poll the data storage unit at a set rate or should the
    data storage unit push updates whenever they occur?
 1. What tool will format and display the visualization of the data?
-  * D3
-  * ggplot
-  * Grafana
-  * Some other tool?
+  * [D3][2]
+  * [Angular Chart][3]
+  * [Grafana][4]
+  * Other tool?
+
+[1]: https://www.influxdata.com/
+[2]: https://d3js.org/
+[3]: http://jtblin.github.io/angular-chart.js/
+[4]: https://grafana.net/tour
