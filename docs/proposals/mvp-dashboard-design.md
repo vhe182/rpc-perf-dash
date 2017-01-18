@@ -89,6 +89,14 @@ other teams.
 
 A description of the steps in the implementation, who will do them, and when.
 
+### Writing the server API
+
+Upon approval, tasks will be identified and given to the performance team.
+
+### Building the dashboard
+
+Upon approval, tasks will be identified and given to the performance team.
+
 ## Open issues (if applicable)
 
 1. What data storage service should be used to store the test results?
