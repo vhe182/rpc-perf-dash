@@ -1,5 +1,5 @@
 *This proposal template was taken from:*
-[Go github repo](https://github.com/golang/proposal/blob/master/design/TEMPLATE.md)
+[Go github repo][5]
 *All credit goes to the original authors of this document.*
 
 # Proposal: Performance Dashboard MVP
@@ -53,7 +53,7 @@ initial development process, these queries will be hardcoded for test results.
 Adding query build functionality for the user is a feature that will be
 developed in future development cycles.
 
-The server polls the data storage unit for performance test logs. The frequency
+The server polls the data storage for performance test logs. The frequency
 of the polling will be adjusted after implementation so that it reflects the
 rate that test results enter the data storage. The server is to maintain a
 cache of frequently and recently accessed data. The server expects a json
@@ -122,3 +122,4 @@ Upon approval, tasks will be identified and given to the performance team.
 [2]: https://d3js.org/
 [3]: http://jtblin.github.io/angular-chart.js/
 [4]: https://grafana.net/tour
+[5]: https://github.com/golang/proposal/blob/master/design/TEMPLATE.md
