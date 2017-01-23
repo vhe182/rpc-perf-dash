@@ -53,11 +53,12 @@ initial development process, these queries will be hardcoded for test results.
 Adding query build functionality for the user is a feature that will be
 developed in future development cycles.
 
-The server polls the data storage for performance test logs. The frequency
-of the polling will be adjusted after implementation so that it reflects the
-rate that test results enter the data storage. The server is to maintain a
-cache of frequently and recently accessed data. The server expects a json
-result from the data store.
+When the server receives input from the user (a query), the server will send
+these queries to the data storage.  The data storage returns the filtered
+performance test results. These results are then pushed to the dashboard.
+The server expects a json result from the data store. The format and structure
+of this json response is a task that will need to be completed during the
+development of the perf-dash.
 
 This data can then be received by the dashboard.
 
