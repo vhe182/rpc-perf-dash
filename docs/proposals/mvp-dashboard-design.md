@@ -71,7 +71,7 @@ running on the same node) using an NGINX reverse proxy.
 The query is made via HTML requests in the form of `GET /api/labs`,
 `GET /api/labs/{lab id}`. The expected result is a json with the appropriate
 test data. This json is then used to create the graph of the specified metrics
-as they trend over the past 50 builds.
+as they trend over past builds.
 
 Our choice of developing a REST API provides the benefit that any graph
 configured by a user can be sured via the URL link to that page.  This allows
