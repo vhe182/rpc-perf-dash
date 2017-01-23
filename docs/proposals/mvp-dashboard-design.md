@@ -60,8 +60,6 @@ The server expects a json result from the data store. The format and structure
 of this json response is a task that will need to be completed during the
 development of the perf-dash.
 
-This data can then be received by the dashboard.
-
 ### Dashboard
 
 The dashboard serves the purpose of allowing the user to make queries of the
