@@ -73,11 +73,6 @@ The query is made via HTML requests in the form of `GET /api/labs`,
 test data. This json is then used to create the graph of the specified metrics
 as they trend over past builds.
 
-Our choice of developing a REST API provides the benefit that any graph
-configured by a user can be sured via the URL link to that page.  This allows
-for the fast sharing of performance test results between team members and
-other teams.
-
 ## Rationale
 
 1. Go vs. Python?
