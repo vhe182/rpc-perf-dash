@@ -75,24 +75,38 @@ as they trend over past builds.
 
 ## Rationale
 
-### Build our own dashboard instead of using Grafana
+### Choice to build our own front-end
 
 1. **Avoid Grafana learning curve**
 
-   [Grafana][4] is used to facilitate performance monitoring in the performance test
-   lab. The team is familiar with it and we have templated various visualizations
-   for tracking the relevant metrics from each node in our cloud. Although we are
-   well aware of creating queries using the Grafana user interface, it is still
-   cumbersome and requires an investment in time to be able to use it. Our goal
-   with the perf-dash is to allow other teams to access the page and quickly be
-   able to understand how to create queries and comparisons between different
-   test runs.
+   [Grafana][4] is used to facilitate performance monitoring in the performance
+   test lab. The team is familiar with it and we have templated various
+   visualizations for tracking the relevant metrics from each node in our
+   cloud. Using Grafana still requires time to use, time that other teams do
+   not have to invest. Our goal with the perf-dash is to allow other teams to
+   access the page and quickly be able make queries and comparisons between
+   different test runs. By minimizing the learning curve, we raise the
+   probability that other teams will want to use our product.
 
-   Grafana also lacks the ability to directly compare multiple metrics from
-   different test runs in different times. Since one of our goals is to create
+1. **Need for metrics comparison of test runs across multiple labs**
+
+   Grafana lacks the ability to directly compare multiple metrics from
+   different test runs from different times. Since one of our goals is to create
    a tool that can be used to compare test runs across different lab
    environments it became clear that Grafana would not be able to fulfill our
    demands.
+
+#### Alternatives
+
+- *Any proposed alternatives and their arguments should be located here.*
+
+### Choice of data storage
+
+1. **Need for SQL filtered querying**
+
+   Using InfluxDB
+
+1. **Established database with historic performance data**
 
 ## Implementation
 
@@ -114,24 +128,8 @@ bird
 
 ## Open issues
 
-1. What data storage service should be used to store the test results?
-  * The performance team has previously used [InfluxDB][1] to handle database
-    duties. InfluxDB is well-suited to the task due to its optimization for
-    time-series data. The perf team has also used it before so they are
-    already familiar with the InfluxDB libraries.
-  * Test results can be stored in files and orderedd in a series of
-    directories. This method would require minimal setup and can be easily
-    ported to another data storage system. An issue with this strategy is that
-    the data will have to all follow the same formatting standards, this adds
-    complexity and added time that the perf team will need to develop a format
-    that can accomodate all of the KPIs and their varying metrics.
 1. Should the server poll the data storage unit at a set rate or should the
    data storage unit push updates whenever they occur?
-1. What tool will format and display the visualization of the data?
-  * [D3][2]
-  * [Angular Chart][3]
-  * [Grafana][4]
-  * Other tool?
 
 [1]: https://www.influxdata.com/
 [2]: https://d3js.org/
