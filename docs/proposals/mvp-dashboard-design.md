@@ -102,11 +102,29 @@ as they trend over past builds.
 
 ### Choice of data storage
 
-1. **Need for SQL filtered querying**
+1. **Need for SQL-like querying with optimizations**
 
-   Using InfluxDB
+   [InfluxDB][1] is a database service optimized for temporal data, which is a
+   characteristic common to performance test data. The querying language
+   used is similar to SQL but incorporates time stamps and indexes off of
+   these whenever filtering. This type of optimization is a benefit to
+   the performance monitoring in this proposal because of the nature of
+   performance analysis.
+
+   Performance analysis requires the investigation of a series of metrics in a
+   test as they trend across time, this results in the high likelihood of
+   queried data being located close on the disk. These same time-based
+   reasoning applies for writing to disk, a write of performance metrics is
+   very likely followed by a similar metrics at a time interval ahead in time;
+   the implication being that the next write will occur close by on the disk.
 
 1. **Established database with historic performance data**
+
+   Previous performance data taken by the team is currently stored in an
+   InfluxDB server. Uniformity between our past, current, and future datasets
+   will ensure that we can make comparisons between different test results.
+   We can accomodate new and different data by properly using tags, a feature
+   of the InfluxDB query language.
 
 ## Implementation
 
@@ -120,7 +138,12 @@ dashboard, server, or data storage.
 ### Server Layout
 
 The server API will include those listed below and more will be added as the
-need for them arises during the development of the perf-dash.
+need for them arises during the development of the perf-dash. Server
+functionality requirements are to:
+
+- Make queries to data storage using the predefined queries in static files
+  and selected by the user.
+- Serve the data to the front-end.
 
 ### Dashboard Layout
 
@@ -128,8 +151,14 @@ bird
 
 ## Open issues
 
-1. Should the server poll the data storage unit at a set rate or should the
-   data storage unit push updates whenever they occur?
+### Metric, Test, and Build Tagging
+
+1. Currently, the performance data we have has not been tagged to distinguish
+   the different metrics, test type, or build run. To be able to query by
+   these characteristics, the data must be tagged accordingly. A scheme must
+   be designed that allows for accessing current metrics. This scheme must also
+   be able to expand into new tests and metrics in the future. This same data
+   should also be able to be queried via KPIs so as to facilitate tracking.
 
 [1]: https://www.influxdata.com/
 [2]: https://d3js.org/
