@@ -45,7 +45,7 @@ can query the relevant test builds.
 
 ![alt text](../images/perf-dash-proposal-diagram.png "Perf-Dash Diagram")
 
-### Server API
+### Server
 
 The system we propose requires the development of a server API that will be
 used to serve queries that a user makes via the dashboard. To speed up the
@@ -75,23 +75,44 @@ as they trend over past builds.
 
 ## Rationale
 
-1. Go vs. Python?
-1. Angular JS 2 vs Angular JS 1?
-1. Why build dashboard instead of using Grafana?
+### Build our own dashboard instead of using Grafana
+
+1. **Avoid Grafana learning curve**
+
+   [Grafana][4] is used to facilitate performance monitoring in the performance test
+   lab. The team is familiar with it and we have templated various visualizations
+   for tracking the relevant metrics from each node in our cloud. Although we are
+   well aware of creating queries using the Grafana user interface, it is still
+   cumbersome and requires an investment in time to be able to use it. Our goal
+   with the perf-dash is to allow other teams to access the page and quickly be
+   able to understand how to create queries and comparisons between different
+   test runs.
+
+   Grafana also lacks the ability to directly compare multiple metrics from
+   different test runs in different times. Since one of our goals is to create
+   a tool that can be used to compare test runs across different lab
+   environments it became clear that Grafana would not be able to fulfill our
+   demands.
 
 ## Implementation
 
-A description of the steps in the implementation, who will do them, and when.
+@meteorfox has volunteered to set up the scaffolding for both the server and
+the dashboard. The goal is to leave a foundation that can be handed over to
+@besanradwan and @vhe182 to work on developing the dashboard and server,
+respectively. Both of these team members will develop their system in tandem.
+These systems will use mocks for sending and receiving requests from the user,
+dashboard, server, or data storage.
 
-### Writing the server API
+### Server Layout
 
-Upon approval, tasks will be identified and given to the performance team.
+The server API will include those listed below and more will be added as the
+need for them arises during the development of the perf-dash.
 
-### Building the dashboard
+### Dashboard Layout
 
-Upon approval, tasks will be identified and given to the performance team.
+bird
 
-## Open issues (if applicable)
+## Open issues
 
 1. What data storage service should be used to store the test results?
   * The performance team has previously used [InfluxDB][1] to handle database
